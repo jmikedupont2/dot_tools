@@ -5,7 +5,7 @@
 #For licensing see the LICENSE file in the top level directory.
 
 from ply import yacc
-from dot_lexer import tokens, Lexer
+from .dot_lexer import tokens, Lexer
 
 from betterast import Node
 
@@ -58,7 +58,7 @@ class Parser(object):
         return 'graph_%d' % self.g_id
 
     def p_error(self, t):
-        print t
+        print(t)
         raise SyntaxError(t)
 
     def p_Graphs_1(self, t):
@@ -121,7 +121,7 @@ class Parser(object):
             items += kid.children
             types[kid.label] = items
         children = list()
-        for k,v in types.iteritems():
+        for k,v in types.items():
             children.append(Node(k, children=v))
         t[0] = Node('Stmts', children=children)
 

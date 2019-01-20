@@ -9,9 +9,9 @@ import os, sys
 
 from nose.tools import ok_ as ok, eq_ as eq, istest
 
-from dot_parser import Parser
-from dot_lexer import Lexer
-from dot_graph import SimpleGraph
+from .dot_parser import Parser
+from .dot_lexer import Lexer
+from .dot_graph import SimpleGraph
 
 
 @istest
@@ -59,6 +59,6 @@ def simple_dot_equality():
     ''', lexer=Lexer())
     t2 = Parser().parse(SimpleGraph.build(t.kid('Graph')).dotty('G'), lexer=Lexer())
     for a, b in zip(t, t2):
-        print a.label, b.label
+        print(a.label, b.label)
     eq(t, t2)
 

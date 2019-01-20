@@ -8,8 +8,8 @@ import os, sys
 
 from nose.tools import ok_ as ok, eq_ as eq, istest
 
-from dot_parser import Parser
-from dot_lexer import Lexer
+from .dot_parser import Parser
+from .dot_lexer import Lexer
 
 @istest
 def yaccs():
@@ -31,7 +31,7 @@ def yaccs():
         x;
       }
     ''', lexer=Lexer())
-    print t.dotty()
+    print(t.dotty())
     eq(t.label, 'Graphs')
     eq(
       [k.label for k in t.children],

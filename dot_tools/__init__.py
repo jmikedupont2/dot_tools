@@ -5,7 +5,7 @@
 #For licensing see the LICENSE file in the top level directory.
 
 
-import dot_parser, dot_lexer
+from . import dot_parser, dot_lexer
 
 def parse(string):
     return dot_parser.Parser().parse(string, lexer=dot_lexer.Lexer())

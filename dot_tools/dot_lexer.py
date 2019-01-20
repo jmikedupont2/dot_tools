@@ -13,7 +13,7 @@ reserved = dict(
     )
 )
 
-tokens = reserved.values() + [
+tokens = list(reserved.values()) + [
     'ID',
     'LSQUARE', 'RSQUARE', 'LCURLY', 'RCURLY',
     'EQUAL', 'COMMA', 'SEMI', 'COLON', 'ARROW', 'DDASH',
@@ -93,7 +93,7 @@ class Lexer(object):
             while lexpos < self.lexer.lexlen:
                 lexpos += 1
                 if lexdata[lexpos] == '\n':
-                    raise Exception, "could not lex string"
+                    raise Exception("could not lex string")
                 if lexdata[lexpos] == '"' and lexdata[lexpos-1] != '\\':
                     self.lexer.lexpos = lexpos+1
                     return MyLexToken(
@@ -120,7 +120,7 @@ class Lexer(object):
                 self.lexer.lexpos = lexpos+1
                 return MyLexToken(
                     'ID', lexdata[lexstart+1:lexpos], token.lineno, lexstart)
-        raise Exception, "could not lex html"
+        raise Exception("could not lex html")
 
     @Token(r'\n+')
     def t_newline(self, t):

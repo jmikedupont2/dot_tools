@@ -6,7 +6,7 @@
 
 from nose.tools import ok_ as ok, eq_ as eq, istest
 
-from dot_lexer import Lexer
+from .dot_lexer import Lexer
 
 def lexit(s, e, v=None):
     l = Lexer()
